@@ -1,15 +1,15 @@
 <?php
-// Database connection
+
 $con = new mysqli("localhost", "root", "", "carrental");
 if ($con->connect_error) {
     die("Connection failed: " . $con->connect_error);
 }
 
-// Query to fetch all car details
+
 $sql = "SELECT * FROM cardetails";
 $result = $con->query($sql);
 
-// Close the database connection
+
 $con->close();
 ?>
 
@@ -19,7 +19,7 @@ $con->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Car Details</title>
-    <!-- Bootstrap CSS -->
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
@@ -46,9 +46,9 @@ $con->close();
         <h2 class="mb-4">Car Details</h2>
         <div class="row">
             <?php
-            // Check if there are any car details fetched
+          
             if ($result->num_rows > 0) {
-                // Loop through each row of car details
+               
                 while ($row = $result->fetch_assoc()) {
             ?>
             <div class="col-md-4 mb-4">

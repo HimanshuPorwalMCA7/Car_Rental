@@ -5,13 +5,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
     
-    // Database connection
     $con = new mysqli("localhost", "root", "", "carrental");
     if ($con->connect_error) {
         die("Failed to connect: " . $con->connect_error);
     }
-    
-    // Prepare and execute the SQL query
     $stmt = $con->prepare("SELECT * FROM agencyregistration WHERE email = ? AND password = ?");
     $stmt->bind_param("ss", $email, $password);
     $stmt->execute();

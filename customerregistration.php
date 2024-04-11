@@ -2,7 +2,6 @@
 $name = $_POST['name'];
 $email = $_POST['email'];
 $password = $_POST['password'];
-// $password= password_hash($hashedpassword, PASSWORD_DEFAULT);
 $role = $_POST['role']; 
 
 $con = new mysqli('localhost', 'root', '', 'carrental');

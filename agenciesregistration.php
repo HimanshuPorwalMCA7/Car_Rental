@@ -1,6 +1,6 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve form data
+  
     $agency_name = $_POST['agency_name'];
     $contact_person = $_POST['contact_person'];
     $email = $_POST['email'];
@@ -8,7 +8,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $role = $_POST['role'];
 
-    // Database connection
     $con = new mysqli('localhost', 'root', '', 'carrental');
     if ($con->connect_error) {
         die('Connection Failed: ' . $con->connect_error);
@@ -34,7 +33,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 } else {
-    // Redirect if accessed directly
     header('Location: agencyregistration.html');
     exit();
 }

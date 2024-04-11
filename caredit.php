@@ -1,15 +1,13 @@
 <?php
-// Database connection
+
 $con = new mysqli("localhost", "root", "", "carrental");
 if ($con->connect_error) {
     die("Connection failed: " . $con->connect_error);
 }
 
-// Check if the ID parameter is provided
 if(isset($_GET['id'])) {
     $id = $_GET['id'];
     
-    // Query to fetch car details by ID
     $sql = "SELECT * FROM cardetails WHERE id = $id";
     $result = $con->query($sql);
     
@@ -85,6 +83,6 @@ if(isset($_GET['id'])) {
 </html>
 
 <?php
-// Close the database connection
+
 $con->close();
 ?>

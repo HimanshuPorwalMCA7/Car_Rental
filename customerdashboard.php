@@ -1,35 +1,32 @@
 <?php
-session_start(); // Starting the session to check if the user is logged in
+session_start(); 
 
-// Check if the user is logged in
 if (!isset($_SESSION['customer_logged_in']) || $_SESSION['customer_logged_in'] !== true) {
     header("Location: customerlogin.html");
-    exit; // Stop further execution
+    exit; 
 }
 
-// Database connection
 $con = new mysqli("localhost", "root", "", "carrental");
 if ($con->connect_error) {
     die("Connection failed: " . $con->connect_error);
 }
 
-// Query to fetch rented car details along with car details for the current user
-$user_id = $_SESSION['customer_id']; // Assuming 'customer_id' is the column name for user id in your database
+
+$user_id = $_SESSION['customer_id']; 
 $sql = "SELECT rentedcar.*, cardetails.* 
         FROM rentedcar 
         INNER JOIN cardetails ON rentedcar.car_id = cardetails.id 
         WHERE rentedcar.user_id = ?";
 
-// Prepare the SQL statement
 $stmt = $con->prepare($sql);
 
-// Bind the user ID parameter
+
 $stmt->bind_param("i", $user_id);
 
-// Execute the query
+
 $stmt->execute();
 
-// Get the result set
+
 $result = $stmt->get_result();
 
 ?>
@@ -45,7 +42,7 @@ $result = $stmt->get_result();
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="dashboard.html">Car Rental Services</a>
+        <a class="navbar-brand" href="index.php">Car Rental Services</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -66,11 +63,10 @@ $result = $stmt->get_result();
     <div class="container mt-5">
         <h1>Your Rented Cars</h1>
         <?php
-        // Check if there are any rented cars found
+        
         if ($result->num_rows > 0) {
-            // Loop through each rented car
+            
             while ($row = $result->fetch_assoc()) {
-                // Display rented car details along with corresponding car details
                 echo "<div class='card mt-3'>";
                 echo "<div class='card-body'>";
                 echo "<h5 class='card-title'>Rented Car ID: " . $row['car_id'] . "</h5>";

@@ -1,23 +1,19 @@
 <?php
-session_start(); // Starting the session to check if the user is logged in
+session_start(); 
 
-// Check if the form is submitted and the user is not logged in
 if ($_SERVER["REQUEST_METHOD"] == "POST" && (!isset($_SESSION['customer_logged_in']) || $_SESSION['customer_logged_in'] !== true)) {
     header("Location: customerlogin.html");
-    exit; // Stop further execution
+    exit; 
 }
 
-// Database connection
 $con = new mysqli("localhost", "root", "", "carrental");
 if ($con->connect_error) {
     die("Connection failed: " . $con->connect_error);
 }
 
-// Query to fetch all car details
 $sql = "SELECT * FROM cardetails";
 $result = $con->query($sql);
 
-// Check if the query executed successfully
 if (!$result) {
     die("Query failed: " . $con->error);
 }
@@ -35,7 +31,7 @@ if (!$result) {
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Car Rental</a>
+        <a class="navbar-brand" href="index.html">Car Rental</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -56,11 +52,11 @@ if (!$result) {
         <h2 class="mb-4">Available Cars to Rent</h2>
         <div class="row">
             <?php
-            // Check if there are any car details fetched
+          
             if ($result->num_rows > 0) {
-                // Loop through each row of car details
+                
                 while ($row = $result->fetch_assoc()) {
-                    // Assuming 'id' is the column name for the car ID in your database
+                    
                     $car_id = $row['id'];
             ?>
             <div class="col-md-4 mb-4">
@@ -85,14 +81,15 @@ if (!$result) {
                                     <input type="date" class="form-control" id="start_date_<?php echo $car_id; ?>" name="start_date_<?php echo $car_id; ?>">
                                 </div>
                                 <input type="hidden" name="car_id_<?php echo $car_id; ?>" value="<?php echo $car_id; ?>">
-                                <button type="submit" class="btn btn-success">Rent Car</button>
+                               
                             <?php endif; ?>
+                            <button type="submit" class="btn btn-success">Rent Car</button>
                         </form>
                     </div>
                 </div>
             </div>
             <?php
-                } // End of while loop for fetching car details
+                } 
             } else {
                 echo "<p>No cars found.</p>";
             }

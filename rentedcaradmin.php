@@ -1,29 +1,23 @@
 <?php
-session_start(); // Starting the session to check if the user is logged in as admin
+session_start(); 
 
-// Check if the user is logged in as admin
 if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
     header("Location: agencieslogin.html");
-    exit; // Stop further execution
+    exit; 
 }
 
-// Database connection
+
 $con = new mysqli("localhost", "root", "", "carrental");
 if ($con->connect_error) {
     die("Connection failed: " . $con->connect_error);
 }
 
-// Query to fetch all rented car details for all users
-// $sql = "SELECT * FROM rentedcar";
-// $sql = "SELECT rentedcar.*, customerregistration.*
-//         FROM rentedcar 
-//         INNER JOIN customerregistration ON rentedcar.user_id = customerregistration.id";
 $sql = "SELECT rentedcar.*, customerregistration.*, cardetails.*
         FROM ((rentedcar
         INNER JOIN customerregistration ON rentedcar.user_id = customerregistration.id)
         INNER JOIN cardetails ON rentedcar.car_id = cardetails.id)";
 
-// Execute the query
+
 $result = $con->query($sql);
 
 ?>
@@ -73,9 +67,9 @@ $result = $con->query($sql);
             <tbody>
                 <?php
                 $i=1;
-                // Check if there are any rented cars found
+                
                 if ($result->num_rows > 0) {
-                    // Loop through each rented car
+                    
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
                         echo "<td>" . $i . "</td>";
