@@ -24,7 +24,7 @@
         if ($check_result->num_rows > 0) {
             
             $message = "Vehicle number already exists.";
-            header('location:agenciesdashboard.html');
+            header('location:agenciesdashboard.php');
         } else {
            
             $stmt = $con->prepare("INSERT INTO cardetails (vehicle_model, vehicle_number, seating_capacity, rent_per_day) VALUES (?, ?, ?, ?)");
@@ -35,7 +35,7 @@
                 
                 $message = "Car details added successfully.";
                 
-                header('location:agenciesdashboard.html');
+                header('location:agenciesdashboard.php');
             } else {
                 
                 $message = "Error: " . $stmt->error;

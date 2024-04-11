@@ -34,7 +34,7 @@ $con->close();
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <li class="nav-item">
-            <a href="agenciesdashboard.html" class="btn btn-success">Back</a>
+            <a href="agenciesdashboard.php" class="btn btn-success">Back</a>
         </li>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

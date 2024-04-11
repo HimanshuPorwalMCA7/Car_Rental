@@ -19,7 +19,7 @@ if (!isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] !== tru
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-info">
-    <a class="navbar-brand" href="agenciesdashboard.html">Car Rental Services</a>
+    <a class="navbar-brand" href="agenciesdashboard.php">Car Rental Services</a>
     
   
     
