@@ -1,4 +1,13 @@
 <?php
+session_start(); 
+
+if (!isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] !== true) {
+    header("Location: agenciesdashboard.php");
+    exit; 
+}
+?>
+
+<?php
 
 $con = new mysqli("localhost", "root", "", "carrental");
 if ($con->connect_error) {

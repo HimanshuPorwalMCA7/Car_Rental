@@ -1,3 +1,11 @@
+<?php
+session_start(); 
+
+if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
+    header("Location: agenciesloginht.php");
+    exit; 
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +18,7 @@
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-info">
-        <a class="navbar-brand" href="index.html">Car Rental Services</a>
+        <a class="navbar-brand" href="#">Car Rental Services</a>
         <span class="navbar-text">
         </span>
         
@@ -19,7 +27,7 @@
        &nbsp;&nbsp;&nbsp;&nbsp; 
             <a href="rentedcaradmin.php" class="btn btn-success">Rented Cars</a>
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="agenciesregistration.html" class="btn btn-success">Add Member</a>
+            <a href="agenciesregistrationht.php" class="btn btn-success">Add Member</a>
       
         
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,7 +45,7 @@
         </div>
     </nav>
     
-    <?php echo $message; ?>
+    
     <!-- Add New Car Form -->
     <div class="container mt-5">
         <div class="row justify-content-center">

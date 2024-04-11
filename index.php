@@ -1,3 +1,12 @@
+<?php
+session_start(); 
+
+
+if (isset($_SESSION['customer_logged_in']) && $_SESSION['customer_logged_in'] == true) {
+    header("Location: customerdashboard.php");
+    exit; 
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 

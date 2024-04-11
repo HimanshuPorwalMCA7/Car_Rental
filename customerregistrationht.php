@@ -1,3 +1,12 @@
+<?php
+session_start(); 
+
+
+if (isset($_SESSION['customer_logged_in']) && $_SESSION['customer_logged_in'] == true) {
+    header("Location: customerdashboard.php");
+    exit; 
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +27,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="agencieslogin.html">Admin Login <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="agenciesloginht.php">Admin Login <span class="sr-only">(current)</span></a>
             </li>
           </ul>
         </div>

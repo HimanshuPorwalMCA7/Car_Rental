@@ -15,10 +15,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $stmt->get_result();
     
     if ($result->num_rows > 0) {
-        // Password is correct, set session variable and redirect
+       
         $_SESSION['admin_logged_in'] = true;
-        $_SESSION['user_email'] = $email; // Optionally store the email in session
-        header('Location: agenciesdashboard.html');
+        $_SESSION['user_email'] = $email; 
+        header('Location: agenciesdashboard.php');
         exit;
     } else {
         $error_message = "Invalid email or password combination";
